@@ -14,7 +14,6 @@ viewRouter.get("/", async (req, res) => {
     try {
         result = await productManager.getAllProducts(page, perPage, sort, query);
 
-        console.log(result)
         let productsArray = result.docs.map(elem => {
             return {
                 id: elem._id,
@@ -39,7 +38,13 @@ viewRouter.get("/", async (req, res) => {
             query: query,
         }
 
-        res.render("products", {productsArray, data});
+        if (data.page > data.totalPages) {
+            let msg = "Page not found.";
+            res.render("error", {msg})
+        } else {
+            res.render("products", {productsArray, data});
+        }
+
     } catch (error) {
         res.status(400).send({status: "error", error: ""})
     }
