@@ -3,6 +3,7 @@ import handlebars from "express-handlebars";
 import mongoose from "mongoose";
 import productRouter from "./src/routes/product.js";
 import cartRouter from "./src/routes/cart.js";
+import viewRouter from "./src/routes/views.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.set("view engine", "handlebars");
 
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
+app.use("/products", viewRouter);
 
 const PORT = 8080;
 const server = app.listen(PORT, () => {
