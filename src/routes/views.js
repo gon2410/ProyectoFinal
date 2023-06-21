@@ -34,7 +34,9 @@ viewRouter.get("/", async (req, res) => {
             nextPage: result.nextPage,
             totalPages: result.totalPages,
             page: result.page,
-            limit: result.limit
+            limit: result.limit,
+            sort: sort,
+            query: query,
         }
 
         res.render("products", {productsArray, data});
