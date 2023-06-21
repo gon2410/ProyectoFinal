@@ -20,7 +20,9 @@ productRouter.get("/", async (req, res) => {
                 title: elem.title,
                 author: elem.author,
                 price: elem.price,
-                description: elem.description
+                description: elem.description,
+                stock: elem.stock,
+                category: elem.category
             }
         })
 
