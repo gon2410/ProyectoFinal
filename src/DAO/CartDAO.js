@@ -29,14 +29,14 @@ class CartManager {
 
     async addToCart(cid, pid) {
         let cartUpdated;
-        let quantity = 1;
+
         try {
             let cart = await this.model.findOne({_id: cid});
 
             // for (let i = 0; i <= cart.products.length; i++) {
             //     console.log(cart.products[i]);
             // }
-            cart.products.push({product: pid, quantity});
+            cart.products.push({product: pid});
             cartUpdated = await this.model.updateOne({_id: cid}, cart);
         } catch (error) {
             console.log(error);
