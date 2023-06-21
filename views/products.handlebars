@@ -8,9 +8,9 @@
 {{/each}}
 
 {{#if data.hasPrevPage}}
-    <a href="/products?page={{data.prevPage}}">Anterior</a>
+    <a href="/products?page={{data.prevPage}}&limit={{data.limit}}">Anterior</a>
 {{/if}}
 
 {{#if data.hasNextPage}}
-    <a href="/products?page={{data.nextPage}}">Siguiente</a>
+    <a href="/products?page={{data.nextPage}}&limit={{data.limit}}">Siguiente</a>
 {{/if}}

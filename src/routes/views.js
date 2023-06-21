@@ -14,6 +14,7 @@ viewRouter.get("/", async (req, res) => {
     try {
         result = await productManager.getAllProducts(page, perPage, sort, query);
 
+        console.log(result)
         let productsArray = result.docs.map(elem => {
             return {
                 id: elem._id,
@@ -33,6 +34,7 @@ viewRouter.get("/", async (req, res) => {
             nextPage: result.nextPage,
             totalPages: result.totalPages,
             page: result.page,
+            limit: result.limit
         }
 
         res.render("products", {productsArray, data});
