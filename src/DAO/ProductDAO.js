@@ -6,15 +6,15 @@ class ProductManager {
         this.model = productModel;
     }
 
-    async getAllProducts(page, perPage, sort) {
+    async getAllProducts(page, perPage, sort, query) {
         let products;
         try {
             if (sort == "asc") {
-                products = await this.model.paginate({}, {page: page, limit: perPage, sort: {price: 1}});
+                products = await this.model.paginate({category: query || {$exists: true}}, {page: page, limit: perPage, sort: {price: 1}});
             } else if (sort == "desc") {
-                products = await this.model.paginate({}, {page: page, limit: perPage, sort: {price: -1}});
+                products = await this.model.paginate({category: query || {$exists: true}}, {page: page, limit: perPage, sort: {price: -1}});
             } else {
-                products = await this.model.paginate({}, {page: page, limit: perPage});
+                products = await this.model.paginate({category: query || {$exists: true}}, {page: page, limit: perPage});
             }
         } catch (error) {
             console.log(error);
