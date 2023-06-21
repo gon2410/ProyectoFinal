@@ -1,0 +1,16 @@
+<h3>Books:</h3>
+{{#each productsArray}}
+    <div>
+        <h5>Title: {{title}}</h5>
+        <h5>Author: {{author}}</h5>
+        <h5>Price: ${{price}}</h5>
+    </div>
+{{/each}}
+
+{{#if data.hasPrevPage}}
+    <a href="/products?page={{data.prevPage}}">Anterior</a>
+{{/if}}
+
+{{#if data.hasNextPage}}
+    <a href="/products?page={{data.nextPage}}">Siguiente</a>
+{{/if}}
