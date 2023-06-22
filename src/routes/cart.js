@@ -4,6 +4,16 @@ import CartManager from "../DAO/CartDAO.js";
 const cartRouter = Router();
 const cartManager = new CartManager();
 
+cartRouter.get("/", async (req, res) => {
+    let carts;
+    try {
+        carts = await cartManager.getCarts();
+        res.send({status: "success", payload: carts})
+    } catch (error) {
+        res.status(400).send({status: "Error", error});
+    }
+})
+
 cartRouter.post("/", async (req, res) => {
     let cart;
     try {

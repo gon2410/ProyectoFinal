@@ -1,11 +1,15 @@
 import { Router } from "express";
 import ProductManager from "../DAO/ProductDAO.js";
+import CartManager from "../DAO/CartDAO.js";
+
 
 const viewRouter = Router();
 const productManager = new ProductManager();
+const cartManager = new CartManager();
 
 viewRouter.get("/", async (req, res) => {
     let result;
+    let cart;
     const perPage = req.query.limit || 10;
     const page = req.query.page || 1;
     const sort = req.query.sort;
@@ -13,6 +17,7 @@ viewRouter.get("/", async (req, res) => {
 
     try {
         result = await productManager.getAllProducts(page, perPage, sort, query);
+        cart = await cartManager.getCarts();
 
         let productsArray = result.docs.map(elem => {
             return {
@@ -22,7 +27,8 @@ viewRouter.get("/", async (req, res) => {
                 price: elem.price,
                 description: elem.description,
                 stock: elem.stock,
-                category: elem.category
+                category: elem.category,
+                cartId: cart._id
             }
         })
 

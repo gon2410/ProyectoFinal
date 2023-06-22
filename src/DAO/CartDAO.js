@@ -5,6 +5,17 @@ class CartManager {
         this.model = cartModel;
     }
 
+    async getCarts() {
+        let carts;
+        try {
+            carts = await this.model.find({});
+        } catch (error) {
+            console.log(error);
+        }
+
+        return carts[0]
+    }
+
     async addCart() {
         let cart;
         try {
