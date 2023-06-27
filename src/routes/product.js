@@ -35,7 +35,7 @@ productRouter.get("/", async (req, res) => {
             page: result.page,
         }
 
-        let prevLink = data.hasNextPage ? `/api/products/?page=${page-1}&limit=${perPage}&query=${query}&sort=${sort}` : null;
+        let prevLink = data.hasPrevPage ? `/api/products/?page=${page-1}&limit=${perPage}&query=${query}&sort=${sort}` : null;
         let nextLink = data.hasNextPage ? `/api/products/?page=${page+1}&limit=${perPage}&query=${query}&sort=${sort}` : null;
 
         res.send({status: "success", payload: productsArray, totalPages: data.totalPages, prevPage: data.prevPage,

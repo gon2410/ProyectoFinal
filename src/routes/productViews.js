@@ -7,6 +7,7 @@ const productViewRouter = Router();
 const productManager = new ProductManager();
 const cartManager = new CartManager();
 
+
 productViewRouter.get("/", async (req, res) => {
     let result;
     let cart;
@@ -49,12 +50,14 @@ productViewRouter.get("/", async (req, res) => {
             let msg = "Page not found.";
             res.render("error", {msg})
         } else {
+            
             res.render("products", {productsArray, data});
         }
 
     } catch (error) {
         res.status(400).send({status: "error", error: ""})
     }
+
 })
 
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.s"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,8 @@
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
     "mongoose": "^7.3.0",
-    "mongoose-paginate-v2": "^1.7.1"
+    "mongoose-paginate-v2": "^1.7.1",
+    "socket.io": "^4.7.0",
+    "socket.io-client": "^4.7.0"
   }
 }
