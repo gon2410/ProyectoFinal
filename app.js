@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import productRouter from "./src/routes/productViews.js"
 import cartRouter from "./src/routes/cart.js";
 import productViewRouter from "./src/routes/productViews.js";
+import cartViewRouter from "./src/routes/cartViews.js";
 import { Server } from "socket.io";
 
 
@@ -32,6 +33,7 @@ mongoose.connect("mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
 app.use("/products", productViewRouter);
+app.use("/carts", cartViewRouter);
 
 // socketServer.on("connection", socket => {
 //     console.log("Nuevo cliente conectado.")
