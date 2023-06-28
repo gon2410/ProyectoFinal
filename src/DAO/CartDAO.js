@@ -30,7 +30,7 @@ class CartManager {
     async getCart(id) {
         let cart;
         try {
-            cart = await this.model.find({_id: id});
+            cart = await this.model.findOne({_id: id});
         } catch (error) {
             console.log(error);
         }

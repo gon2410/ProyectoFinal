@@ -12,7 +12,7 @@ cartViewRouter.get("/:cid", async (req, res) => {
     try {
         cart = await cartManager.getCart(cartId);
 
-        const cartArray = cart[0].products.map(elem => {
+        const cartArray = cart.products.map(elem => {
             return {
                 title: elem.product.title,
                 author: elem.product.author,
