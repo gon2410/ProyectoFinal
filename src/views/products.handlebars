@@ -1,6 +1,7 @@
 <a href="/carts/{{data.cartId}}">Ver Carrito</a>
 
 <h3>Libros:</h3>
+<h6>-----------------------</h6>
 {{#each productsArray}}
     <div>
         <h5>Titulo: {{title}}</h5>
@@ -10,6 +11,7 @@
         <form action="/api/carts/{{cartId}}/product/{{id}}" method="POST">
             <input type="submit" value="Agregar al carrito">
         </form>
+        <h6>-----------------------</h6>
     </div>
 {{/each}}
 
