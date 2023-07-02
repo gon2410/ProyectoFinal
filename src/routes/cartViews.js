@@ -14,9 +14,11 @@ cartViewRouter.get("/:cid", async (req, res) => {
 
         const cartArray = cart.products.map(elem => {
             return {
+                id: elem.product._id,
                 title: elem.product.title,
                 author: elem.product.author,
-                price: elem.product.price
+                price: elem.product.price,
+                cartId: cartId
             }
         })
 

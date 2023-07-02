@@ -7,7 +7,6 @@ import productViewRouter from "./src/routes/productViews.js";
 import cartViewRouter from "./src/routes/cartViews.js";
 import { Server } from "socket.io";
 
-
 const app = express();
 
 app.use(express.json())
@@ -34,10 +33,3 @@ app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
 app.use("/products", productViewRouter);
 app.use("/carts", cartViewRouter);
-
-// socketServer.on("connection", socket => {
-//     console.log("Nuevo cliente conectado.")
-
-//     socket.emit("event", "emitiendo desde app");
-// })
-

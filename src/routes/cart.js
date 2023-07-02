@@ -7,7 +7,7 @@ const cartManager = new CartManager();
 cartRouter.get("/", async (req, res) => {
     let carts;
     try {
-        carts = await cartManager.getCarts();
+        carts = await cartManager.getAllCarts();
         res.send({status: "success", payload: carts})
     } catch (error) {
         res.status(400).send({status: "Error", error});

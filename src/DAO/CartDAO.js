@@ -13,7 +13,7 @@ class CartManager {
             console.log(error);
         }
 
-        return carts[0]
+        return carts
     }
 
     async addCart() {
