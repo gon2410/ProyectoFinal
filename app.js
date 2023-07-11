@@ -1,21 +1,24 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import mongoose from "mongoose";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+
+import sessionRouter from "./src/routes/session.js";
 import productRouter from "./src/routes/productViews.js"
 import cartRouter from "./src/routes/cart.js";
 import productViewRouter from "./src/routes/productViews.js";
 import cartViewRouter from "./src/routes/cartViews.js";
-import { Server } from "socket.io";
 
 const app = express();
 
+app.use(express.static("./src/public"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-app.engine("handlebars", handlebars.engine());
+app.engine(".hbs", handlebars.engine({ extname: ".hbs", defaultLayout: "main.hbs" }));
 app.set("views", "./src/views");
-app.set("view engine", "handlebars");
-app.use(express.static("./src/public"))
+app.set("view engine", ".hbs");
 
 const PORT = 8080;
 const httpServer = app.listen(PORT, () => {
@@ -23,12 +26,23 @@ const httpServer = app.listen(PORT, () => {
 })
 httpServer.on("error", error => console.log(error));
 
-const socketServer = new Server(httpServer);
-
 mongoose.connect("mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/ecommerce?retryWrites=true&w=majority")
 .then(() => console.log("Database connected."))
 .catch(err => console.log(err));
 
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: "mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/session?retryWrites=true&w=majority",
+        mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
+        ttl: 20
+    }),
+    secret: "esteesmisecret",
+    resave: false,
+    saveUninitialized: false
+}))
+
+
+app.use("/api/session", sessionRouter);
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
 app.use("/products", productViewRouter);

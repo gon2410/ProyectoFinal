@@ -26,7 +26,8 @@ productViewRouter.get("/", async (req, res) => {
                 description: elem.description,
                 stock: elem.stock,
                 category: elem.category,
-                cartId: cart[0]._id
+                cartId: cart[0]._id,
+                thumbnail: elem.thumbnail
             }
         })
 
