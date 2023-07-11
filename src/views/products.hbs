@@ -2,29 +2,53 @@
 <h3>{{user}}</h3>
 
 <div class="container-fluid row mt-5 justify-content-center">
-{{#each productsArray}}
-    {{!-- <div>
-        <h5>Titulo: {{title}}</h5>
-        <h5>Autor: {{author}}</h5>
-        <h5>Precio: ${{price}}</h5>
-        <h5>Categoria: {{category}}</h5>
-        <form action="/api/carts/{{cartId}}/product/{{id}}" method="POST">
-            <input type="submit" value="Agregar al carrito">
-        </form>
-        <h6>-----------------------</h6>
-    </div> --}}
-    <div class="card m-1" style="width: 18rem;">
-        <img src="/images/{{thumbnail}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{ title }}</h5>
-            <p class="card-text">{{author}}</p>
-            <p class="card-text">${{price}}</p>
-            <form action="/api/carts/{{cartId}}/product/{{id}}" method="POST">
-                <button class="btn btn-sm" type="submit"><img src="/icons/cart-plus.svg" alt=""></button>
-            </form>
+    <div class="d-flex">
+        <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownPriceButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ordenar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownPriceButton">
+                <button class="dropdown-item" onclick="location.href='/products?page={{data.page}}&limit={{data.limit}}&sort=asc&query={{data.query}}'">Precio ascendente</button>
+                <button class="dropdown-item" onclick="location.href='/products?page={{data.page}}&limit={{data.limit}}&sort=desc&query={{data.query}}'">Precio descendente</button>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownCategoryButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categoria
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownCategoryButton">
+                <button class="dropdown-item" onclick="location.href='/products?page={{data.page}}&limit={{data.limit}}&sort={{data.sort}}&query='">Todas</button>
+                <button class="dropdown-item" onclick="location.href='/products?page={{data.page}}&limit={{data.limit}}&sort={{data.sort}}&query=fantasia'">Fantasia</button>
+                <button class="dropdown-item" onclick="location.href='/products?page={{data.page}}&limit={{data.limit}}&sort={{data.sort}}&query=drama'">Drama</button>
+                <button class="dropdown-item" onclick="location.href='/products?page={{data.page}}&limit={{data.limit}}&sort={{data.sort}}&query=ciencia_ficcion'">Ciencia Ficcion</button>
+                <button class="dropdown-item" onclick="location.href='/products?page={{data.page}}&limit={{data.limit}}&sort={{data.sort}}&query=terror'">Terror</button>
+            </div>
         </div>
     </div>
-{{/each}}
+    {{#each productsArray}}
+        {{!-- <div>
+            <h5>Titulo: {{title}}</h5>
+            <h5>Autor: {{author}}</h5>
+            <h5>Precio: ${{price}}</h5>
+            <h5>Categoria: {{category}}</h5>
+            <form action="/api/carts/{{cartId}}/product/{{id}}" method="POST">
+                <input type="submit" value="Agregar al carrito">
+            </form>
+            <h6>-----------------------</h6>
+        </div> --}}
+        <div class="card m-1" style="width: 18rem;">
+            <img src="/images/{{thumbnail}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{author}}</p>
+                <p class="card-text">${{price}}</p>
+                <form action="/api/carts/{{cartId}}/product/{{id}}" method="POST">
+                    <button class="btn btn-sm" type="submit"><img src="/icons/cart-plus.svg" alt=""></button>
+                </form>
+            </div>
+        </div>
+    {{/each}}
 </div>
 
 
