@@ -31,11 +31,14 @@ const httpServer = app.listen(PORT, () => {
 httpServer.on("error", error => console.log(error));
 
 
+mongoose.connect("mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/ecommerce?retryWrites=true&w=majority")
+.then(() => console.log("Database connected."))
+.catch(err => console.log(err));
 
 app.use(cookieParser());
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: "mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/session?retryWrites=true&w=majority",
+        mongoUrl: "mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/ecommerce?retryWrites=true&w=majority",
         mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
         ttl: 20
     }),

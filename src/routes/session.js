@@ -35,6 +35,15 @@ sessionRouter.get("/faillogin", (req, res) => {
     res.render("login-error", {})
 })
 
+sessionRouter.get("/github", passport.authenticate("github", {scope: ["user:email"]}), async (req, res) => {
+
+}) 
+
+sessionRouter.get("/githubcallback", passport.authenticate("github", {failureRedirect: "/api/session/login"}), async (req, res) => {
+    req.session.user = req.user;
+    res.render("products", {user: req.session.user});
+})
+
 sessionRouter.get("/profile", authMiddleware, (req, res) => {
     res.redirect("/products")
     //res.render("products", {user})
@@ -42,7 +51,7 @@ sessionRouter.get("/profile", authMiddleware, (req, res) => {
 
 sessionRouter.get("/logout", (req, res) => {
     req.session.destroy(error => {
-        res.render("login")
+        res.render("login");
     })
 })
 

@@ -31,7 +31,7 @@
                 <p class="card-text">{{author}}</p>
                 <p class="card-text">${{price}}</p>
                 <form action="/api/carts/{{cartId}}/product/{{id}}" method="POST">
-                    <button class="btn btn-sm" type="submit"><img src="/icons/cart-plus.svg" alt=""></button>
+                    <button class="btn btn-sm" type="submit"><img src="/icons/cart-plus.svg" alt="Add to cart icon"></button>
                 </form>
             </div>
         </div>
@@ -41,10 +41,10 @@
 
 <div class="container-sm d-flex mt-5 justify-content-center" style="width: 500rem;">
     {{#if data.hasPrevPage}}
-        <button class="btn" onclick="location.href='/products?page={{data.prevPage}}&limit={{data.limit}}&sort={{data.sort}}&query={{data.query}}'"><img src="/icons/arrow-left-circle.svg" alt=""></button>
+        <button class="btn" onclick="location.href='/products?page={{data.prevPage}}&limit={{data.limit}}&sort={{data.sort}}&query={{data.query}}'"><img src="/icons/arrow-left-circle.svg" alt="left arrow icon"></button>
     {{/if}}
 
     {{#if data.hasNextPage}}
-        <button class="btn" onclick="location.href='/products?page={{data.nextPage}}&limit={{data.limit}}&sort={{data.sort}}&query={{data.query}}'"><img src="/icons/arrow-right-circle.svg" alt=""></button>
+        <button class="btn" onclick="location.href='/products?page={{data.nextPage}}&limit={{data.limit}}&sort={{data.sort}}&query={{data.query}}'"><img src="/icons/arrow-right-circle.svg" alt="right arrow icon"></button>
     {{/if}}
 </div>
