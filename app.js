@@ -3,8 +3,10 @@ import handlebars from "express-handlebars";
 import mongoose from "mongoose";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import cookieParser from "cookie-parser";
 import passport from "passport";
 import initializePassport from "./src/config/passport.config.js";
+
 
 import sessionRouter from "./src/routes/session.js";
 import productRouter from "./src/routes/productViews.js"
@@ -28,10 +30,9 @@ const httpServer = app.listen(PORT, () => {
 })
 httpServer.on("error", error => console.log(error));
 
-mongoose.connect("mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/ecommerce?retryWrites=true&w=majority")
-.then(() => console.log("Database connected."))
-.catch(err => console.log(err));
 
+
+app.use(cookieParser());
 app.use(session({
     store: MongoStore.create({
         mongoUrl: "mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/session?retryWrites=true&w=majority",

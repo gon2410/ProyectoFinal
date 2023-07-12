@@ -1,5 +1,9 @@
+import mongoose from "mongoose";
 import { productModel } from "./models/product.model.js";
 
+mongoose.connect("mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/ecommerce?retryWrites=true&w=majority")
+.then(() => console.log("Database connected."))
+.catch(err => console.log(err));
 
 class ProductManager {
     constructor() {
