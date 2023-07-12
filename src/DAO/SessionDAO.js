@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { userModel } from "./models/user.model.js";
 
-//mongoose.connect("mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/session?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://goonolivera:xyzab3landa@cluster0.rdf8a7f.mongodb.net/ecommerce?retryWrites=true&w=majority");
 
 export const getAll = async () => {
     let result;
@@ -25,6 +25,17 @@ export const getByEmail = async email => {
     return result;
 }
 
+export const getById = async id => {
+    let result;
+    try {
+        result = await userModel.findOne({ _id: id })
+    } catch (error) {
+        console.log(error);
+    }
+
+    return result;
+}
+
 export const createUser = async user => {
     let result;
     try {
@@ -33,5 +44,16 @@ export const createUser = async user => {
         console.log(error);
     }
 
+    return result;
+}
+
+export const updateUserPassword = async (email, newPassword) => {
+    let result;
+    try {
+        result = await userModel.updateOne({email: email}, { $set: {password: newPassword}})
+    } catch (error) {
+        console.log(error);
+    }
+    
     return result;
 }
