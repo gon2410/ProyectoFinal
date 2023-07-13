@@ -1,14 +1,20 @@
-<h3>Carrito</h3>
-<h6>-----------------------</h6>
+<h3 class="mt-5">Carrito</h3>
 
 {{#if cartArray}}
     {{#each cartArray}}
-        <div>
-            <h5>Titulo: {{title}}</h5>
-            <h5>Autor: {{author}}</h5>
-            <h5>Precio: ${{price}}</h5>
-            <input type="submit" value="Eliminar del carrito">
-            <h6>-----------------------</h6>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="/images/{{thumbnail}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{author}}</p>
+                        <p class="card-text">${{price}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     {{/each}}
 {{else}}

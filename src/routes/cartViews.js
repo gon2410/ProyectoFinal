@@ -18,6 +18,7 @@ cartViewRouter.get("/:cid", async (req, res) => {
                 title: elem.product.title,
                 author: elem.product.author,
                 price: elem.product.price,
+                thumbnail: elem.product.thumbnail,
                 cartId: cartId
             }
         })
